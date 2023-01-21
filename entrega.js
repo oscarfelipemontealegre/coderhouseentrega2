@@ -54,7 +54,13 @@ async getDelete(){
         console.log('el producto no se encuentra')
     }
 }
-
+#agregarId(){
+    let id = 1
+    if (this.productoId.length!==0){
+        id = this.productoId[this.productoId.length-1].id+1
+    }
+    return id
+}
 
 }
 

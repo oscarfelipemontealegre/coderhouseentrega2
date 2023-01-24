@@ -7,13 +7,13 @@ const datos = './datos.json';
 
 class ProductManager{
     
-async addProduct(producto){
+async addProduct(productos){
     try {
-        const datosProductos = await this.getProduct()
-        datosProductos.push(productos)
-        await fs.promises.writeFile(producto,JSON.stringify(datosProductos))
+        const listaProducto = await this.getProduct()
+        listaProducto.push(productos)
+        await fs.promises.writeFile(datos,JSON.stringify(listaProducto))
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
@@ -31,50 +31,85 @@ async getProduct(){
     }
 }
 
-async getProductById(){
+async Id(){
+    const datos = this.getProduct();
     try {
-        if (fs.existsSync(id)){
-            const productoId = await fs.identify(id)
-        }else{
-            return ('el producto se encuentra')
-        }
+        const NuevoId;
+        datos.length === 0 ? NuevoId = 1:NuevoId =datos[datos.length-1].Id+1;
+        
+
+        const nuevoProducto={ ...Id, id:nuevoId};
+        datos.push(nuevoProducto)
+        await this.writeFile(datos);
+        return nuevoProducto.id;
+
     } catch (error) {
-        console.log('el producto no se encuentra')
+        console.log(error)
+    }
+}
+
+async getFindId(){
+    const datos = this.getProduct();
+    try {
+        const Id =datos.find(Id => datos.id === Id);
+        return Id ? Id: null;
+
+    } catch (error) {
+        console.log(error)
     }
 }
 
 async getDelete(){
+    const datos = this.getProduct();
     try {
-        if (fs.existsSync(id)){
-            const borrarProducto = await fs.unlink(id)
-        }else{
-            return ('el producto se encuentra')
-        }
+        datos = datos.filter(datos => datos.id != id);
+        await this.writeFile(datos);
     } catch (error) {
-        console.log('el producto no se encuentra')
+        console.log(error)
     }
 }
-#agregarId(){
-    let id = 1
-    if (this.productoId.length!==0){
-        id = this.productoId[this.productoId.length-1].id+1
-    }
-    return id
-}
+
+
 
 }
 
 const producto = new ProductManager()
 
 async function entrega () {
-const getProduct = await producto.getProduct()
-console.log(getProduct)
+const getProducts = await producto.getProduct()
+console.log(getProducts)
 
-const getProductById = await getProductById.productoId
-console.log(getProductById)
+const listaProducto1 ={
+    "title": "producto prueba",
+    "description":"Este es un producto prueba",
+    "price":200,
+    "thumbnail":"Sin imagen",
+    "code":"abc123",
+    "stock":25
+}
 
-const getDelete = await getProductById.productoId
-console.log (getDelete)
+const listaProducto2 ={
+    "title": "producto prueba1",
+    "description":"Este es un producto prueba1",
+    "price":230,
+    "thumbnail":"Sin imagen1",
+    "code":"abc1234",
+    "stock":10
+}
+const listaProducto3 ={
+    "title": "producto prueba2",
+            "description":"Este es un producto prueba2",
+            "price":290,
+            "thumbnail":"Sin imagen3",
+            "code":"abc12345",
+            "stock":20
+}
+
+await producto.addProduct(listaProducto1)
+await producto.addProduct(listaProducto2)
+await producto.addProduct(listaProducto3)
+
+
 }
 
 

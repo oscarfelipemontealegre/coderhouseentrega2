@@ -7,15 +7,21 @@ const datos = './datos.json';
 
 class ProductManager{
     
-async addProduct(productos){
+/*async addProduct(productos){
     try {
         const listaProducto = await this.getProduct()
         listaProducto.push(productos)
         await fs.promises.writeFile(datos,JSON.stringify(listaProducto))
+        const datoId = await this.getProduct();
+        if (datoId.length ===0){
+            productos.id = 1
+            datoId.push(productos);
+            await fs.promises.writeFile(datos,JSON.stringify(datoId,null,'\t'));
+        }
     } catch (error) {
-        console.log(error)
+        console.log(error) 
     }
-}
+}*/
 
 async getProduct(){
     try {
@@ -23,6 +29,7 @@ async getProduct(){
             const productos = await fs.promises.readFile(datos,'utf-8')
             const productosJS = JSON.parse(productos)
             return productosJS
+            
         }else{
             return []
         }
@@ -31,47 +38,51 @@ async getProduct(){
     }
 }
 
-async Id(){
-    const datos = this.getProduct();
-    try {
-        const NuevoId;
-        datos.length === 0 ? NuevoId = 1:NuevoId =datos[datos.length-1].Id+1;
-        
-
-        const nuevoProducto={ ...Id, id:nuevoId};
-        datos.push(nuevoProducto)
-        await this.writeFile(datos);
-        return nuevoProducto.id;
-
-    } catch (error) {
-        console.log(error)
+addProduct = async( productos)=>{
+try {
+    const datoId= await this.getProduct();
+    if (datoId.length ===0){
+        productos.id = 1;
+        datoId.push(productos);
+        await fs.promises.writeFile(datos,JSON.stringify(datoId,null,'\t'));
+    }else{
+        productos.id=datoId[datoId.length-1].id+1;
+        datoId.push(productos);
+        await fs.promises.writeFile(datos,JSON.stringify(datoId,null,'\t'));
     }
+    
+} catch (error) {
+    console.log(error)
+}
 }
 
-async getFindId(){
-    const datos = this.getProduct();
+
+
+getFindId = async () =>{
+    const productos = this.getProduct();
     try {
-        const Id =datos.find(Id => datos.id === Id);
+        const Id = productos.find(Id => productos.id === Id);
         return Id ? Id: null;
 
+
     } catch (error) {
         console.log(error)
     }
 }
 
-async getDelete(){
-    const datos = this.getProduct();
+getDelete = async id =>{
+    const productos = await this.getProduct();
     try {
-        datos = datos.filter(datos => datos.id != id);
-        await this.writeFile(datos);
+        productos = productos.filter(producto => producto.id != id);
+        await this.writeFile(productos);
     } catch (error) {
         console.log(error)
     }
 }
 
 
-
 }
+
 
 const producto = new ProductManager()
 
@@ -80,7 +91,7 @@ const getProducts = await producto.getProduct()
 console.log(getProducts)
 
 const listaProducto1 ={
-    "title": "producto prueba",
+    "itle": "producto1",
     "description":"Este es un producto prueba",
     "price":200,
     "thumbnail":"Sin imagen",
@@ -89,7 +100,7 @@ const listaProducto1 ={
 }
 
 const listaProducto2 ={
-    "title": "producto prueba1",
+    "title": "producto2",
     "description":"Este es un producto prueba1",
     "price":230,
     "thumbnail":"Sin imagen1",
@@ -97,21 +108,32 @@ const listaProducto2 ={
     "stock":10
 }
 const listaProducto3 ={
-    "title": "producto prueba2",
+            "title": "producto3",
             "description":"Este es un producto prueba2",
             "price":290,
             "thumbnail":"Sin imagen3",
             "code":"abc12345",
             "stock":20
 }
-
-await producto.addProduct(listaProducto1)
-await producto.addProduct(listaProducto2)
-await producto.addProduct(listaProducto3)
-
-
+const listaProducto4 ={
+    "title": "producto4",
+    "description":"Este es un producto prueba2",
+    "price":290,
+    "thumbnail":"Sin imagen3",
+    "code":"abc12345",
+    "stock":20
 }
 
 
 
-entrega()
+
+//await producto.addProduct(listaProducto3)
+await producto.addProduct(listaProducto4)
+    
+}
+
+
+
+
+
+entrega();

@@ -1,1 +1,38 @@
-[{"title":"producto prueba","description":"Este es un producto prueba","price":200,"thumbnail":"Sin imagen","code":"abc123","stock":25},{"title":"producto prueba","description":"Este es un producto prueba","price":200,"thumbnail":"Sin imagen","code":"abc123","stock":25},{"title":"producto prueba1","description":"Este es un producto prueba1","price":230,"thumbnail":"Sin imagen1","code":"abc1234","stock":10},{"title":"producto prueba","description":"Este es un producto prueba","price":200,"thumbnail":"Sin imagen","code":"abc123","stock":25},{"title":"producto prueba1","description":"Este es un producto prueba1","price":230,"thumbnail":"Sin imagen1","code":"abc1234","stock":10},{"title":"producto prueba2","description":"Este es un producto prueba2","price":290,"thumbnail":"Sin imagen3","code":"abc12345","stock":20},{"title":"producto prueba","description":"Este es un producto prueba","price":200,"thumbnail":"Sin imagen","code":"abc123","stock":25},{"title":"producto prueba1","description":"Este es un producto prueba1","price":230,"thumbnail":"Sin imagen1","code":"abc1234","stock":10},{"title":"producto prueba2","description":"Este es un producto prueba2","price":290,"thumbnail":"Sin imagen3","code":"abc12345","stock":20},{"title":"producto prueba","description":"Este es un producto prueba","price":200,"thumbnail":"Sin imagen","code":"abc123","stock":25},{"title":"producto prueba1","description":"Este es un producto prueba1","price":230,"thumbnail":"Sin imagen1","code":"abc1234","stock":10},{"title":"producto prueba2","description":"Este es un producto prueba2","price":290,"thumbnail":"Sin imagen3","code":"abc12345","stock":20},{"title":"producto prueba","description":"Este es un producto prueba","price":200,"thumbnail":"Sin imagen","code":"abc123","stock":25},{"title":"producto prueba1","description":"Este es un producto prueba1","price":230,"thumbnail":"Sin imagen1","code":"abc1234","stock":10},{"title":"producto prueba2","description":"Este es un producto prueba2","price":290,"thumbnail":"Sin imagen3","code":"abc12345","stock":20}]
+[
+	{
+		"itle": "producto1",
+		"description": "Este es un producto prueba",
+		"price": 200,
+		"thumbnail": "Sin imagen",
+		"code": "abc123",
+		"stock": 25,
+		"id": 1
+	},
+	{
+		"title": "producto2",
+		"description": "Este es un producto prueba1",
+		"price": 230,
+		"thumbnail": "Sin imagen1",
+		"code": "abc1234",
+		"stock": 10,
+		"id": 2
+	},
+	{
+		"title": "producto3",
+		"description": "Este es un producto prueba2",
+		"price": 290,
+		"thumbnail": "Sin imagen3",
+		"code": "abc12345",
+		"stock": 20,
+		"id": 3
+	},
+	{
+		"title": "producto4",
+		"description": "Este es un producto prueba2",
+		"price": 290,
+		"thumbnail": "Sin imagen3",
+		"code": "abc12345",
+		"stock": 20,
+		"id": 4
+	}
+]

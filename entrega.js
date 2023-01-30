@@ -58,8 +58,8 @@ try {
 
 
 
-getFindId = async () =>{
-    const productos = this.getProduct();
+getFindId = async  id =>{
+    const productos = await this.getProduct();
     try {
         const Id = productos.find(Id => productos.id === Id);
         return Id ? Id: null;
@@ -73,7 +73,8 @@ getFindId = async () =>{
 getDelete = async id =>{
     const productos = await this.getProduct();
     try {
-        productos = productos.filter(producto => producto.id != id);
+        const indexOfElement = productos.findIndex(dato => dato.id != id);
+        productos.splice(indexOfElement,1);
         await this.writeFile(productos);
     } catch (error) {
         console.log(error)
@@ -128,7 +129,7 @@ const listaProducto4 ={
 
 
 //await producto.addProduct(listaProducto3)
-await producto.addProduct(listaProducto4)
+await producto.getFindId(3)
     
 }
 
